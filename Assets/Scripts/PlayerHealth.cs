@@ -6,7 +6,7 @@ using UnityEngine.Experimental.VFX;
 public class PlayerHealth : MonoBehaviour
 {
 
-    public int playerHealth;
+    public float playerHealth;
     public int healthSwitch;
 
     public Gradient ParticleHealthGradient;
@@ -38,5 +38,6 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void TakeDamage(float dam) { playerHealth -= dam; }
     
 }

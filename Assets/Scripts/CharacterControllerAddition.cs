@@ -26,6 +26,8 @@ public class CharacterControllerAddition : MonoBehaviour
 
     private float wait = -1;
 
+    public float matchWaitTimer = 0;
+
     public bool changedTransform;
 
     //Animator Region.  Double click to expand. Tap Ctrl + M twice to shrink.
@@ -57,10 +59,13 @@ public class CharacterControllerAddition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        matchWaitTimer -= Time.deltaTime;
+        if (matchWaitTimer < -600) matchWaitTimer = 0f;
+
         if (wait >= 0) wait -= Time.deltaTime;
         if (instantiatedMatch == null)
         {
-            if (Input.GetKeyDown(KeyCode.Q)) LightMatch();
+            if (Input.GetKeyDown(KeyCode.Q)) if (matchWaitTimer <= 0)LightMatch();
         }
         else
         {
@@ -176,5 +181,10 @@ public class CharacterControllerAddition : MonoBehaviour
         instantiatedMatch = Instantiate<GameObject>(match, fingers.transform);
         instantiatedMatch.transform.localScale -= new Vector3(.099f,.099f,.099f);
         instantiatedMatch.transform.parent = fingers.transform;
+    }
+
+    public void SetMatchWaitTimer(float amount)
+    {
+        matchWaitTimer = amount;
     }
 }
