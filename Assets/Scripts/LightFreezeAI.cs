@@ -18,7 +18,7 @@ public class LightFreezeAI : MonoBehaviour
 
     private float extinguishWait;
 
-    private float chaseSpeed = 4;
+    private float chaseSpeed = 3;
 
     private void Start()
     {
@@ -41,7 +41,7 @@ public class LightFreezeAI : MonoBehaviour
             {
                 agent.destination = player.transform.position;
                 agent.speed = chaseSpeed;
-                if (Vector3.Distance(transform.position, player.transform.position) < 5) player.GetComponentInChildren<PlayerHealth>().TakeDamage(5 * Time.deltaTime);
+                if (Vector3.Distance(transform.position, player.transform.position) < 1) player.GetComponentInChildren<PlayerHealth>().TakeDamage(5 * Time.deltaTime);
             }
             extinguishWait -= Time.deltaTime;
             if (extinguishWait <= 0) { MassExtinguish(); getNewWaitTime(); }
@@ -49,7 +49,7 @@ public class LightFreezeAI : MonoBehaviour
         else { agent.destination = transform.position; agent.speed = 0f; }
     }
 
-    private void getNewWaitTime() { extinguishWait = Random.Range(14f, 20f); }
+    private void getNewWaitTime() { extinguishWait = Random.Range(14f, 35f); }
 
     private void MassExtinguish()
     {
@@ -61,6 +61,6 @@ public class LightFreezeAI : MonoBehaviour
                 catch { Destroy(light.gameObject); }  
             }
         }
-        player.GetComponent<CharacterControllerAddition>().SetMatchWaitTimer(Random.Range(5f,8f));
+        player.GetComponent<CharacterControllerAddition>().SetMatchWaitTimer(Random.Range(3f,5f));
     }
 }
