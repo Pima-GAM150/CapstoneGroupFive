@@ -23,7 +23,6 @@ public class PlayerHealth : MonoBehaviour
     {
         if (playerHealth > 50)
         {
-            //HealthParticles.GetGradient("HealthGradient");
             //HealthParticles.SetGradient("HealthGradient", ParticleHealthGradient);
             healthSwitch = 0;
             HealthParticles.SetInt("myHealthSwitch", healthSwitch);
@@ -31,10 +30,16 @@ public class PlayerHealth : MonoBehaviour
 
         if (playerHealth < 50)
         {
-            //HealthParticles.GetGradient("LowHealthGradient");
             //HealthParticles.SetGradient("LowHealthGradient", ParticleHealthGradient);
             healthSwitch = 1;
             HealthParticles.SetInt("myHealthSwitch", healthSwitch);
+        }
+
+        if (playerHealth <= 0)
+        {
+            //Application.Quit();
+            //Will actually set up a system here for reset depending on how we decide to go about our scene set up.
+            Debug.Log("Game Over!");
         }
     }
 

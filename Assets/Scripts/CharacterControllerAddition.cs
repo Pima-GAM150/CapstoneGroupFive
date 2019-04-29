@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterControllerAddition : MonoBehaviour
 {
@@ -44,6 +45,14 @@ public class CharacterControllerAddition : MonoBehaviour
 
     #endregion
 
+    //Key Region.  Double click to expand. Tap Ctrl + M twice to shrink.
+    #region Key Region
+
+    bool hasKeys;
+    int keyNum;
+
+    #endregion
+
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -71,11 +80,12 @@ public class CharacterControllerAddition : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q)) DropMatch();
         }
-        agentTarget.position = transform.position;
+        /*agentTarget.position = transform.position;
         agentTarget.position = RotateDestination(GetDirection(), agentTarget.position);
         agent.destination = agentTarget.position;
         heldObject.position = RotateDestination(new Vector3(-.5f, 1.5f, 2.5f), transform.position);
-        heldObject.position = RotateDestination(GetDirection(), heldObject.position);
+        heldObject.position = RotateDestination(GetDirection(), heldObject.position);*/
+
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out currentHit, Mathf.Infinity, LayerMask.GetMask("Default")))
         {
             IMoveableObject clickedObj = currentHit.collider.GetComponent<IMoveableObject>();
@@ -186,5 +196,19 @@ public class CharacterControllerAddition : MonoBehaviour
     public void SetMatchWaitTimer(float amount)
     {
         matchWaitTimer = amount;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Key")
+        {
+            Destroy(other.gameObject);
+            hasKeys = true;
+        }
+        if (other.gameObject.tag == "Victory")
+        {
+            //Change scene to credits scene/victory scene.
+            Debug.Log("You Win!");
+        }
     }
 }
