@@ -21,6 +21,9 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        HealthParticles.SetFloat("MyHealthPercentage", playerHealth / 100);
+
         if (playerHealth > 50)
         {
             //HealthParticles.SetGradient("HealthGradient", ParticleHealthGradient);

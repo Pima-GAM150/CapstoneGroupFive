@@ -41,7 +41,7 @@ public class LightFreezeAI : MonoBehaviour
             {
                 agent.destination = player.transform.position;
                 agent.speed = chaseSpeed;
-                if (Vector3.Distance(transform.position, player.transform.position) < 1) player.GetComponentInChildren<PlayerHealth>().TakeDamage(5 * Time.deltaTime);
+                if (Vector3.Distance(transform.position, player.transform.position) < 2) player.GetComponentInChildren<PlayerHealth>().TakeDamage(5 * Time.deltaTime);
             }
             extinguishWait -= Time.deltaTime;
             if (extinguishWait <= 0) { MassExtinguish(); getNewWaitTime(); }

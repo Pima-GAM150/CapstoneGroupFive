@@ -4776,6 +4776,26 @@ PrefabInstance:
       propertyPath: rotationRate
       value: 270
       objectReference: {fileID: 0}
+    - target: {fileID: 3101812942533627590, guid: 442a263f0eff747409ec618ebabeb23a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101812942881848777, guid: 442a263f0eff747409ec618ebabeb23a,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101812942881848777, guid: 442a263f0eff747409ec618ebabeb23a,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101812942881848777, guid: 442a263f0eff747409ec618ebabeb23a,
+        type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Name
+      value: MyHealthPercentage
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442a263f0eff747409ec618ebabeb23a, type: 3}
 --- !u!1 &1231362687 stripped
