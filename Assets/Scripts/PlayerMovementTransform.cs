@@ -11,10 +11,17 @@ public class PlayerMovementTransform : MonoBehaviour
 
     public float rotationRate = 360;
     public float moveSpeed = 2;
+    public float sprintMoveSpeed;
     public float jumpForce = 100;
     public bool isJumping;
 
     private Rigidbody playerRB;
+
+    #region Animator Reference
+
+    
+
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -41,16 +48,38 @@ public class PlayerMovementTransform : MonoBehaviour
         {
             isJumping = false;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
+        /*if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
         {
             isJumping = true;
             Jump(jumpInput);
+        }*/
+        if (Input.GetKey(KeyCode.W))
+        {
+            GetComponent<CharacterControllerAddition>().isWalking = true;
+        }
+        else
+        {
+            GetComponent<CharacterControllerAddition>().isWalking = false;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            //Need a backwards walk animation...
+        }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            GetComponent<CharacterControllerAddition>().isRunning = true;
+            sprintMoveSpeed = 3;
+        }
+        else
+        {
+            GetComponent<CharacterControllerAddition>().isRunning = false;
+            sprintMoveSpeed = 1;
         }
     }
 
     private void Move(float input)
     {
-        transform.Translate(Vector3.forward * input * moveSpeed);
+        transform.Translate(Vector3.forward * input * moveSpeed * sprintMoveSpeed);
     }
 
     private void Turn(float input)

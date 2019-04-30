@@ -36,12 +36,9 @@ public class CharacterControllerAddition : MonoBehaviour
 
     Animator myAnimator;
 
-    [SerializeField]
-    bool isWalking;
-    [SerializeField]
-    bool isRunning;
-    [SerializeField]
-    bool isJumping;
+    public bool isWalking;
+    public bool isRunning;
+    public bool isJumping;
 
     #endregion
 
@@ -133,7 +130,7 @@ public class CharacterControllerAddition : MonoBehaviour
         {
             //for animator use
             isWalking = true;
-            direction += Vector3.forward;
+            //direction += Vector3.forward;
         }
         //for animator use
         else
@@ -143,7 +140,7 @@ public class CharacterControllerAddition : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.S))
         {
-            direction += Vector3.back;
+            //direction += Vector3.back;
         }
         if (Input.GetKey(KeyCode.A))
         {
