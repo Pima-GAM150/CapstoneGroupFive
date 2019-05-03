@@ -4418,6 +4418,21 @@ PrefabInstance:
       propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Name
       value: MyHealthPercentage
       objectReference: {fileID: 0}
+    - target: {fileID: 3101812941350635484, guid: 442a263f0eff747409ec618ebabeb23a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101812941350635484, guid: 442a263f0eff747409ec618ebabeb23a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 3101812941350635484, guid: 442a263f0eff747409ec618ebabeb23a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.23
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 442a263f0eff747409ec618ebabeb23a, type: 3}
 --- !u!1 &1231362687 stripped
