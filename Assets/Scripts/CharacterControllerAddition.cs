@@ -109,7 +109,17 @@ public class CharacterControllerAddition : MonoBehaviour
 
             var mouseSensitivityFactor = mouseSensitivityCurve.Evaluate(mouseMovement.magnitude);
 
-            sceneCamera.eulerAngles -= new Vector3( mouseMovement.y * mouseSensitivityFactor,0f,0f);
+            Vector3 angleToChangeCamera;
+
+            if ((mouseMovement.y * mouseSensitivityFactor) > 5) angleToChangeCamera = new Vector3(5, 0f, 0f);
+            else if ((mouseMovement.y * mouseSensitivityFactor) < -5) angleToChangeCamera = new Vector3(-5, 0f, 0f);
+            else angleToChangeCamera = new Vector3(mouseMovement.y * mouseSensitivityFactor,0f,0f);
+
+            if (sceneCamera.eulerAngles.x > 355 && mouseMovement.y > 0) sceneCamera.eulerAngles -= angleToChangeCamera;
+            else if (sceneCamera.eulerAngles.x >= 0 && sceneCamera.eulerAngles.x <= 30 && mouseMovement.y > 0) sceneCamera.eulerAngles -= angleToChangeCamera;
+            else if (sceneCamera.eulerAngles.x >= 350 && sceneCamera.eulerAngles.x >= 0 && mouseMovement.y < 0) sceneCamera.eulerAngles -= angleToChangeCamera;
+            else if (sceneCamera.eulerAngles.x < 25 && mouseMovement.y < 0) sceneCamera.eulerAngles -= angleToChangeCamera;
+
             transform.eulerAngles += new Vector3(0f,mouseMovement.x * mouseSensitivityFactor,0f);
             if (!changedTransform) if (mouseMovement != new Vector2(0f, 0f)) changedTransform = true;
             else changedTransform = false;
