@@ -31,17 +31,6 @@ public class CharacterControllerAddition : MonoBehaviour
 
     public bool changedTransform;
 
-    //Animator Region.  Double click to expand. Tap Ctrl + M twice to shrink.
-    #region Animator Region
-
-    Animator myAnimator;
-
-    public bool isWalking;
-    public bool isRunning;
-    public bool isJumping;
-
-    #endregion
-
     //Key Region.  Double click to expand. Tap Ctrl + M twice to shrink.
     #region Key Region
 
@@ -49,18 +38,6 @@ public class CharacterControllerAddition : MonoBehaviour
     int keyNum;
 
     #endregion
-
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-
-        //Animator set-up
-        myAnimator = myCharacter.GetComponent<Animator>();
-
-        isWalking = false;
-        isRunning = false;
-        isJumping = false;
-    }
 
     // Update is called once per frame
     void Update()
@@ -77,12 +54,6 @@ public class CharacterControllerAddition : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q)) DropMatch();
         }
-        /*agentTarget.position = transform.position;
-        agentTarget.position = RotateDestination(GetDirection(), agentTarget.position);
-        agent.destination = agentTarget.position;
-        heldObject.position = RotateDestination(new Vector3(-.5f, 1.5f, 2.5f), transform.position);
-        heldObject.position = RotateDestination(GetDirection(), heldObject.position);*/
-
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out currentHit, Mathf.Infinity, LayerMask.GetMask("Default")))
         {
             IMoveableObject clickedObj = currentHit.collider.GetComponent<IMoveableObject>();
@@ -124,66 +95,6 @@ public class CharacterControllerAddition : MonoBehaviour
             if (!changedTransform) if (mouseMovement != new Vector2(0f, 0f)) changedTransform = true;
             else changedTransform = false;
         }
-
-        //updating animator variables to the bools within the character controller
-        myAnimator.SetBool("IsWalking", isWalking);
-        myAnimator.SetBool("IsRunning", isRunning);
-        myAnimator.SetBool("IsJumping", isJumping);
-        GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        GetComponent<Rigidbody>().velocity = Vector3.zero;
-    }
-
-    public Vector3 GetDirection()
-    {
-        Vector3 direction = new Vector3();
-        if (Input.GetKey(KeyCode.W))
-        {
-            //for animator use
-            isWalking = true;
-            //direction += Vector3.forward;
-        }
-        //for animator use
-        else
-        {
-            isWalking = false;
-            isRunning = false;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            //direction += Vector3.back;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            //direction += Vector3.left;
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            //direction += Vector3.right;
-        }
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            //for animator use
-            isRunning = true;
-
-            agent.speed = 14f;
-        }
-        else
-        {
-            //for animator use
-            isRunning = false;
-
-            agent.speed = 3.5f;
-        }
-        if (direction != new Vector3(0f, 0f, 0f)) changedTransform = true;
-        else changedTransform = false;
-        return direction;
-    }
-
-    public Vector3 RotateDestination(Vector3 direction, Vector3 input)
-    {
-        Vector3 rotatedTranslation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z) * direction ;
-
-        return input += rotatedTranslation;
     }
 
     public void DropMatch()
