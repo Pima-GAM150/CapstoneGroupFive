@@ -152,4 +152,16 @@ public class CharacterControllerAddition : MonoBehaviour
     }
 
     public bool HasKeys() { return hasKeys; }
+
+    public bool HasMatch()
+    {
+        if (instantiatedMatch == null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }
