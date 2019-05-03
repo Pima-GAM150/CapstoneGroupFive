@@ -24,8 +24,8 @@ public class CameraCastToCharacter : MonoBehaviour
 
         if (hit.transform != null)
         {
-            Debug.Log("Raycast successful.");
-            Debug.Log(hit.transform.name);
+            //Debug.Log("Raycast successful.");
+            //Debug.Log(hit.transform.name);
         }
 
         if (hit.transform.tag != "Player")
@@ -41,7 +41,7 @@ public class CameraCastToCharacter : MonoBehaviour
                 //DisabledRenderer.enabled = true;
                 //DisabledRenderer = hit.transform.GetComponent<MeshRenderer>();
                 myRenderList = hit.transform.gameObject.GetComponent<MeshRendererList>().thisObjectMeshes;
-                Debug.Log("Switching Disabled Objects");
+                //Debug.Log("Switching Disabled Objects");
             }
             //hit.transform.GetComponent<MeshRenderer>().enabled = false;
             myRenderList = hit.transform.gameObject.GetComponent<MeshRendererList>().thisObjectMeshes;
@@ -49,7 +49,7 @@ public class CameraCastToCharacter : MonoBehaviour
             {
                 enabledRender.enabled = false;
             }
-            Debug.Log("Disabling Objects");
+            //Debug.Log("Disabling Objects");
         }
         else
         {

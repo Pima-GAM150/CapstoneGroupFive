@@ -162,7 +162,8 @@ public class CharacterControllerAddition : MonoBehaviour
         if (other.gameObject.tag == "Victory")
         {
             //Change scene to credits scene/victory scene.
-            Debug.Log("You Win!");
+            SceneManager.LoadScene(4);
+            //Debug.Log("You Win!");
         }
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.VFX;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -42,7 +43,8 @@ public class PlayerHealth : MonoBehaviour
         {
             //Application.Quit();
             //Will actually set up a system here for reset depending on how we decide to go about our scene set up.
-            Debug.Log("Game Over!");
+            //Debug.Log("Game Over!");
+            SceneManager.LoadScene(3);
         }
     }
 
