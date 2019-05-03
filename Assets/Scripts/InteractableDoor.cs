@@ -9,7 +9,7 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
     private Quaternion closedPosition;
     private bool close = false;
     private bool openInOpenOut;
-    private bool locked = false;
+    private bool locked;
     private UnityEngine.AI.NavMeshObstacle navMeshOb;
     private Rigidbody rb;
     
@@ -21,6 +21,9 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
         closedPosition = new Quaternion(0f, transform.rotation.y, 0f,0f);
         navMeshOb = GetComponentInChildren<UnityEngine.AI.NavMeshObstacle>();
         rb = GetComponent<Rigidbody>();
+        locked = false;
+        LockDoor();
+        
     }
 
     // Update is called once per frame
@@ -70,12 +73,27 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
 
     public void OnClicked()
     {
-        Debug.Log("CLICKED");
+        
+    }
+
+    public void LockDoor()
+    {
         if (!locked)
+        {
+            navMeshOb.enabled = true;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            locked = true;
+        }
+    }
+
+    public void UnlockDoor()
+    {
+        if (locked)
         {
             navMeshOb.enabled = false;
             rb.constraints = RigidbodyConstraints.None;
-        } 
+            locked = false;
+        }
     }
 
     public void OnThrown()

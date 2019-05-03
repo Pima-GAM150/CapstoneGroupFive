@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CharacterControllerAddition : MonoBehaviour
 {
@@ -152,18 +151,5 @@ public class CharacterControllerAddition : MonoBehaviour
         matchWaitTimer = amount;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Key")
-        {
-            Destroy(other.gameObject);
-            hasKeys = true;
-        }
-        if (other.gameObject.tag == "Victory")
-        {
-            //Change scene to credits scene/victory scene.
-            SceneManager.LoadScene(4);
-            //Debug.Log("You Win!");
-        }
-    }
+    public bool HasKeys() { return hasKeys; }
 }

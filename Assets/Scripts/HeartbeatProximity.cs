@@ -6,6 +6,7 @@ public class HeartbeatProximity : MonoBehaviour
 {
     public int heartRate = 20;
     public float distance;
+    public float verticalDistance;
     public float audioDelay = 0f;
     public GameObject Player;
     public GameObject Monster;
@@ -23,18 +24,23 @@ public class HeartbeatProximity : MonoBehaviour
     void Update()
     {
         distance = Mathf.Round(Vector3.Distance(Player.transform.position, Monster.transform.position));
+        verticalDistance = Vector3.Distance(new Vector3(0, Player.transform.position.y), new Vector3(0, Monster.transform.position.y));
         if (distance < 120)
         {
-            audioDelay += 1;
-            if (distance >= 12 && audioDelay > distance - 5 && audioDelay < distance + 5 && !heartSource.isPlaying)
+            Debug.Log(distance);
+            if (verticalDistance < 2)
             {
-                Debug.Log("Playing heartbeat");
-                heartSource.Play();
-                audioDelay = 0;
-            }
-            else if (audioDelay > distance + 5)
-            {
-                audioDelay = 0;
+                audioDelay += 1;
+                if (distance >= 4 && audioDelay > distance - 5 && audioDelay < distance + 5 && !heartSource.isPlaying)
+                {
+                    Debug.Log("Playing heartbeat");
+                    heartSource.Play();
+                    audioDelay = 0;
+                }
+                else if (audioDelay > distance + 5)
+                {
+                    audioDelay = 0;
+                }
             }
         }
     }
