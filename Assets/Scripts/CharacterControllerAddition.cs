@@ -44,7 +44,7 @@ public class CharacterControllerAddition : MonoBehaviour
     //Key Region.  Double click to expand. Tap Ctrl + M twice to shrink.
     #region Key Region
 
-    bool hasKeys;
+    public bool hasKeys;
     int keyNum;
 
     #endregion
@@ -64,6 +64,7 @@ public class CharacterControllerAddition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HasKeys();
         matchWaitTimer -= Time.deltaTime;
         if (matchWaitTimer < -600) matchWaitTimer = 0f;
 
@@ -82,7 +83,7 @@ public class CharacterControllerAddition : MonoBehaviour
         heldObject.position = RotateDestination(new Vector3(-.5f, 1.5f, 2.5f), transform.position);
         heldObject.position = RotateDestination(GetDirection(), heldObject.position);*/
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out currentHit, Mathf.Infinity, LayerMask.GetMask("Default")))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out currentHit, Mathf.Infinity, LayerMask.GetMask("Object")))
         {
             IMoveableObject clickedObj = currentHit.collider.GetComponent<IMoveableObject>();
             if (clickedObj != null && wait < 0)
@@ -151,7 +152,19 @@ public class CharacterControllerAddition : MonoBehaviour
         matchWaitTimer = amount;
     }
 
-    public bool HasKeys() { return hasKeys; }
+    public bool HasKeys()
+    {
+        return hasKeys;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Key")
+        {
+            Destroy(collision.gameObject);
+            hasKeys = true;
+        }
+    }
 
     public bool HasMatch()
     {

@@ -6,10 +6,14 @@ public class Lock : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Key")
+        if (other.gameObject.tag == "Player")
         {
-            Destroy(other.gameObject);
-            other.GetComponentInParent<InteractableDoor>().UnlockDoor();
+            if (other.gameObject.GetComponent<CharacterControllerAddition>().hasKeys == true)
+            {
+                GetComponentInParent<InteractableDoor>().UnlockDoor();
+                //Destroy(other.gameObject);
+                Destroy(this.gameObject);
+            }
             //other.GetComponentInParent<CharacterControllerAddition>().HasKeys();
         }   
     }
