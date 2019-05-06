@@ -5,8 +5,8 @@ using UnityEngine;
 public class PlayerMovementTransform : MonoBehaviour
 {
 
-    private string moveInputAxis = "Vertical";
-    private string turnInputAxis = "Horizontal";
+    private string verticalInputAxis = "Vertical";
+    private string horizontalInputAxis = "Horizontal";
     private string jumpInputAxis = "Jump";
 
     public float rotationRate = 360;
@@ -33,17 +33,17 @@ public class PlayerMovementTransform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveAxis = Input.GetAxis(moveInputAxis);
-        float turnAxis = Input.GetAxis(turnInputAxis);
+        float verticalAxis = Input.GetAxis(verticalInputAxis);
+        float horizontalAxis = Input.GetAxis(horizontalInputAxis);
         float jumpAxis = Input.GetAxis(jumpInputAxis);
 
-        ApplyInput(moveAxis, turnAxis, jumpAxis);
+        ApplyInput(verticalAxis, horizontalAxis, jumpAxis);
     }
 
-    private void ApplyInput(float moveInput, float turnInput, float jumpInput)
+    private void ApplyInput(float verticalInput, float horizontalInput, float jumpInput)
     {
-        Move(moveInput);
-        Turn(turnInput);
+        MoveVertical(verticalInput);
+        MoveHorizontal(horizontalInput);
         if (playerRB.velocity.y == 0)
         {
             isJumping = false;
@@ -64,6 +64,27 @@ public class PlayerMovementTransform : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             //Need a backwards walk animation...
+            //GetComponent<CharacterControllerAddition>().isBackpeddle = true;
+        }
+        else
+        {
+            //GetComponent<CharacterControllerAddition>().isBackpeddle = false;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            //GetComponent<CharacterControllerAddition>().isRight = true;
+        }
+        else
+        {
+            //GetComponent<CharacterControllerAddition>().isRight = false;
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            //GetComponent<CharacterControllerAddition>().isLeft = true;
+        }
+        else
+        {
+            //GetComponent<CharacterControllerAddition>().isLeft = false;
         }
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -77,14 +98,14 @@ public class PlayerMovementTransform : MonoBehaviour
         }
     }
 
-    private void Move(float input)
+    private void MoveVertical(float input)
     {
         transform.Translate(Vector3.forward * input * moveSpeed * sprintMoveSpeed);
     }
 
-    private void Turn(float input)
+    private void MoveHorizontal(float input)
     {
-        transform.Rotate(0, input * rotationRate * Time.deltaTime, 0);
+        transform.Translate(Vector3.right * input * moveSpeed * sprintMoveSpeed);
     }
 
     private void Jump(float input)

@@ -44,7 +44,7 @@ public class PlayerHealth : MonoBehaviour
             //Application.Quit();
             //Will actually set up a system here for reset depending on how we decide to go about our scene set up.
             //Debug.Log("Game Over!");
-            SceneManager.LoadScene(3);
+            SceneManager.LoadScene(1);
         }
     }
 
