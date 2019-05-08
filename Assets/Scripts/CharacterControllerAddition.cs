@@ -33,11 +33,14 @@ public class CharacterControllerAddition : MonoBehaviour
     //Animator Region.  Double click to expand. Tap Ctrl + M twice to shrink.
     #region Animator Region
 
-    Animator myAnimator;
+    public Animator myAnimator;
 
     public bool isWalking;
     public bool isRunning;
     public bool isJumping;
+    public bool isBack;
+    public bool isRight;
+    public bool isLeft;
 
     #endregion
 
@@ -54,11 +57,11 @@ public class CharacterControllerAddition : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
 
         //Animator set-up
-        myAnimator = myCharacter.GetComponent<Animator>();
+        //myAnimator = myCharacter.GetComponent<Animator>();
 
-        isWalking = false;
-        isRunning = false;
-        isJumping = false;
+        //isWalking = false;
+        //isRunning = false;
+        //isJumping = false;
     }
 
     // Update is called once per frame
@@ -126,9 +129,12 @@ public class CharacterControllerAddition : MonoBehaviour
         }
 
         //updating animator variables to the bools within the character controller
-        myAnimator.SetBool("IsWalking", isWalking);
+        /*myAnimator.SetBool("IsWalking", isWalking);
         myAnimator.SetBool("IsRunning", isRunning);
         myAnimator.SetBool("IsJumping", isJumping);
+        myAnimator.SetBool("IsBack", isBack);
+        myAnimator.SetBool("IsRight", isRight);
+        myAnimator.SetBool("IsLeft", isLeft);*/
         GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
         GetComponent<Rigidbody>().velocity = Vector3.zero;
     }

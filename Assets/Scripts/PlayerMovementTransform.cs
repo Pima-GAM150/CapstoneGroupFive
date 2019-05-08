@@ -19,7 +19,7 @@ public class PlayerMovementTransform : MonoBehaviour
 
     #region Animator Reference
 
-    
+    private Animator BlendAnimator;
 
     #endregion
 
@@ -28,6 +28,7 @@ public class PlayerMovementTransform : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody>();
         isJumping = false;
+        BlendAnimator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -36,39 +37,50 @@ public class PlayerMovementTransform : MonoBehaviour
         float verticalAxis = Input.GetAxis(verticalInputAxis);
         float horizontalAxis = Input.GetAxis(horizontalInputAxis);
         float jumpAxis = Input.GetAxis(jumpInputAxis);
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            verticalAxis = verticalAxis * 2;
+        }
 
         ApplyInput(verticalAxis, horizontalAxis, jumpAxis);
     }
 
     private void ApplyInput(float verticalInput, float horizontalInput, float jumpInput)
     {
+        float animVert = verticalInput;
+        float animHori = horizontalInput;
+
+        BlendAnimator.SetFloat("BlendX", animHori);
+        BlendAnimator.SetFloat("BlendY", animVert);
+
         MoveVertical(verticalInput);
         MoveHorizontal(horizontalInput);
-        if (playerRB.velocity.y == 0)
+        /*if (playerRB.velocity.y == 0)
         {
             isJumping = false;
-        }
+        }*/
         /*if (Input.GetKeyDown(KeyCode.Space) && isJumping == false)
         {
             isJumping = true;
             Jump(jumpInput);
         }*/
+        /*
         if (Input.GetKey(KeyCode.W))
         {
-            GetComponent<CharacterControllerAddition>().isWalking = true;
+            //GetComponent<CharacterControllerAddition>().isWalking = true;
         }
         else
         {
-            GetComponent<CharacterControllerAddition>().isWalking = false;
+            //GetComponent<CharacterControllerAddition>().isWalking = false;
         }
         if (Input.GetKey(KeyCode.S))
         {
             //Need a backwards walk animation...
-            //GetComponent<CharacterControllerAddition>().isBackpeddle = true;
+            //GetComponent<CharacterControllerAddition>().isBack = true;
         }
         else
         {
-            //GetComponent<CharacterControllerAddition>().isBackpeddle = false;
+            //GetComponent<CharacterControllerAddition>().isBack = false;
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -85,15 +97,15 @@ public class PlayerMovementTransform : MonoBehaviour
         else
         {
             //GetComponent<CharacterControllerAddition>().isLeft = false;
-        }
+        }*/
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            GetComponent<CharacterControllerAddition>().isRunning = true;
+            //GetComponent<CharacterControllerAddition>().isRunning = true;
             sprintMoveSpeed = 3;
         }
         else
         {
-            GetComponent<CharacterControllerAddition>().isRunning = false;
+            //GetComponent<CharacterControllerAddition>().isRunning = false;
             sprintMoveSpeed = 1;
         }
     }
@@ -101,11 +113,13 @@ public class PlayerMovementTransform : MonoBehaviour
     private void MoveVertical(float input)
     {
         transform.Translate(Vector3.forward * input * moveSpeed * sprintMoveSpeed);
+        Debug.Log("Is moving on vert.");
     }
 
     private void MoveHorizontal(float input)
     {
         transform.Translate(Vector3.right * input * moveSpeed * sprintMoveSpeed);
+        Debug.Log("Is moving on horiz.");
     }
 
     private void Jump(float input)
