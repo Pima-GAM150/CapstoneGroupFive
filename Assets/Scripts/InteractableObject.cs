@@ -42,6 +42,7 @@ public class InteractableObject : MonoBehaviour , IMoveableObject
         if (Vector3.Distance(player.position, transform.position) < 8)
         {
             Held = true;
+            GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             gameObject.GetComponent<Rigidbody>().useGravity = false;
         }
     }

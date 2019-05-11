@@ -14,6 +14,8 @@ public class Flicker : MonoBehaviour
 
     public float matchJumpiness = 2;
 
+    public float nearPlane;
+
     private void Awake()
     {
         LifeSpan = getLifeSpan();
@@ -45,16 +47,19 @@ public class Flicker : MonoBehaviour
     public void FlickerLerp()
     {
         Match.intensity = Mathf.Lerp(Match.intensity, intensity, Time.deltaTime * matchJumpiness);
+        Match.shadowNearPlane = Mathf.Lerp(Match.shadowNearPlane,nearPlane,Time.deltaTime * matchJumpiness);
     }
 
     public void randomFlickerIdle()
     {
         intensity = Random.Range(60f, 70f);
+        nearPlane = 2 - (intensity/100);
         if (intensity > 75f) flickerWait += .8f;
     }
     public void randomFlickerMoveing()
     {
         intensity = Random.Range(50f, 60f);
+        nearPlane = 2 - (intensity / 100);
         if (intensity < 55f) flickerWait += .8f;
     }
     private float getLifeSpan()

@@ -113,13 +113,11 @@ public class PlayerMovementTransform : MonoBehaviour
     private void MoveVertical(float input)
     {
         transform.Translate(Vector3.forward * input * moveSpeed * sprintMoveSpeed);
-        Debug.Log("Is moving on vert.");
     }
 
     private void MoveHorizontal(float input)
     {
         transform.Translate(Vector3.right * input * moveSpeed * sprintMoveSpeed);
-        Debug.Log("Is moving on horiz.");
     }
 
     private void Jump(float input)

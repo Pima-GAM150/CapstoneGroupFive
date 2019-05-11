@@ -25,5 +25,6 @@ public class Lantern : MonoBehaviour
     public void LightLantern(){
     	lightSource = Instantiate<GameObject>(match,Light.transform);
     	lightSource.GetComponent<Flicker>().LifeSpan = 30f;
+        FindObjectOfType<SceneOneSaveManager>().Save();
     }
 }

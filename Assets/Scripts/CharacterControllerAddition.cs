@@ -47,8 +47,7 @@ public class CharacterControllerAddition : MonoBehaviour
     //Key Region.  Double click to expand. Tap Ctrl + M twice to shrink.
     #region Key Region
 
-    public bool hasKeys;
-    int keyNum;
+    public List<int> keyRing;
 
     #endregion
 
@@ -67,7 +66,6 @@ public class CharacterControllerAddition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HasKeys();
         matchWaitTimer -= Time.deltaTime;
         if (matchWaitTimer < -600) matchWaitTimer = 0f;
 
@@ -80,11 +78,6 @@ public class CharacterControllerAddition : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Q)) DropMatch();
         }
-        /*agentTarget.position = transform.position;
-        agentTarget.position = RotateDestination(GetDirection(), agentTarget.position);
-        agent.destination = agentTarget.position;
-        heldObject.position = RotateDestination(new Vector3(-.5f, 1.5f, 2.5f), transform.position);
-        heldObject.position = RotateDestination(GetDirection(), heldObject.position);*/
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out currentHit, Mathf.Infinity, LayerMask.GetMask("Object")))
         {
@@ -158,17 +151,21 @@ public class CharacterControllerAddition : MonoBehaviour
         matchWaitTimer = amount;
     }
 
-    public bool HasKeys()
+    public bool HasKey(int index)
     {
-        return hasKeys;
+        for (int i = 0; i < keyRing.Count; i++)
+        {
+            if (index == keyRing[i]) return true;
+        }
+        return false;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Key")
         {
+            keyRing.Add(collision.gameObject.GetComponent<KeyData>().keyIndex);
             Destroy(collision.gameObject);
-            hasKeys = true;
         }
     }
 

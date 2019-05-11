@@ -5,20 +5,20 @@ using UnityEngine;
 public class InteractableDoor : MonoBehaviour , IMoveableObject
 {
     public Transform player;
-    private Vector3 doorPosition;
     private Quaternion closedPosition;
     private bool close = false;
     private bool openInOpenOut;
     private bool locked;
     private UnityEngine.AI.NavMeshObstacle navMeshOb;
     private Rigidbody rb;
+
+    public int doorIndex;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        doorPosition = transform.position;
-        closedPosition = new Quaternion(0f, transform.rotation.y, 0f,0f);
+        closedPosition = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z,transform.rotation.w);
         navMeshOb = GetComponentInChildren<UnityEngine.AI.NavMeshObstacle>();
         rb = GetComponent<Rigidbody>();
         LockDoor();
@@ -27,7 +27,6 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
     // Update is called once per frame
     void Update()
     {
-        transform.position = doorPosition;
         if (Vector3.Distance(player.position, transform.position) < 10)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -42,9 +41,10 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
         {
             if (openInOpenOut)
             {
-                transform.Rotate(new Vector3(0f, -Mathf.Lerp(transform.position.y, closedPosition.y, Time.deltaTime), 0f));
+                transform.rotation = new Quaternion(transform.rotation.x, Mathf.Lerp(transform.rotation.y, closedPosition.y, Time.deltaTime * 5),transform.rotation.z,transform.rotation.w);
+                //transform.Rotate(new Vector3(0f, Mathf.Lerp(transform.rotation.y, closedPosition.y, 5f), 0f));
                 rb.velocity = Vector3.zero;
-                if (transform.rotation.y <= 0)
+                if (transform.rotation.y <= closedPosition.y+.01)
                 {
                     transform.rotation = closedPosition;
                     close = false;
@@ -56,9 +56,10 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
 
             if (!openInOpenOut)
             {
-                transform.Rotate(new Vector3(0f, Mathf.Lerp(transform.position.y, closedPosition.y, Time.deltaTime), 0f));
+                transform.rotation = new Quaternion(transform.rotation.x, Mathf.Lerp(closedPosition.y, transform.rotation.y, Time.deltaTime * 5), transform.rotation.z, transform.rotation.w);
+                //transform.Rotate(new Vector3(0f, -Mathf.Lerp(transform.rotation.y, closedPosition.y, 5f), 0f));
                 rb.velocity = Vector3.zero;
-                if (transform.rotation.y >= 0)
+                if (transform.rotation.y >= closedPosition.y-.01)
                 {
                     transform.rotation = closedPosition;
                     close = false;
@@ -71,7 +72,11 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
 
     public void OnClicked()
     {
-        
+        if (!locked)
+        {
+            navMeshOb.enabled = false;
+            rb.constraints = RigidbodyConstraints.None;
+        }
     }
 
     public void LockDoor()
@@ -95,11 +100,16 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
 
     public void OnMouseHover()
     {
-        if (Vector3.Distance(player.position, transform.position) < 8) Debug.Log("Open?"); //Change cursor to indicate player can use this
+        if (Vector3.Distance(player.position, transform.position) < 8) { }//Debug.Log("Open?"); //Change cursor to indicate player can use this
     }
 
     public bool IsHeld()
     {
         return false;
+    }
+
+    public bool Unlocked()
+    {
+        return !locked;
     }
 }

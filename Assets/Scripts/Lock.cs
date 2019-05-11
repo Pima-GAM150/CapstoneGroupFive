@@ -8,13 +8,19 @@ public class Lock : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            if (other.gameObject.GetComponent<CharacterControllerAddition>().hasKeys == true)
+            Debug.Log("Player Entered");
+            for(int i = 0; i < other.GetComponent<CharacterControllerAddition>().keyRing.Count; i++)
             {
-                GetComponentInParent<InteractableDoor>().UnlockDoor();
-                //Destroy(other.gameObject);
-                Destroy(this.gameObject);
+                if (other.GetComponent<CharacterControllerAddition>().keyRing[i] == GetComponentInParent<InteractableDoor>().doorIndex) UnlockDoor();
             }
-            //other.GetComponentInParent<CharacterControllerAddition>().HasKeys();
         }   
+    }
+
+    private void OnTriggerExit(Collider other) { if (other.gameObject.tag == "Barricade") { UnlockDoor(); } }
+
+    public void UnlockDoor()
+    {
+        GetComponentInParent<InteractableDoor>().UnlockDoor();
+        Destroy(this.gameObject);
     }
 }
