@@ -9,9 +9,8 @@ public class Victory : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            //Change scene to credits scene/victory scene.
-            SceneManager.LoadScene(2);
-            //Debug.Log("You Win!");
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene(3);
         }
     }
 }

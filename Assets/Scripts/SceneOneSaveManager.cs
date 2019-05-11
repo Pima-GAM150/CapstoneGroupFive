@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class SceneOneSaveManager : MonoBehaviour
 {
+    public GameObject monsterOne;
+
+    public GameObject monsterTwo;
+
+    public GameObject monsterThree;
+
     public GameObject player;
 
     public GameObject[] doors;
@@ -55,6 +61,12 @@ public class SceneOneSaveManager : MonoBehaviour
                     if (SceneOneKeyIndexes[i] == loadedSave.keyRing[j]) spawn = false;
                 }
                 if (spawn) SpawnSceneOneKeys(i);
+            }
+            for (int i = 0; i < loadedSave.keyRing.Count; i++)
+            {
+                if (loadedSave.keyRing[i] == 7) monsterOne.GetComponent<LightFreezeAI>().triggered = true;
+                if (loadedSave.keyRing[i] == 9) monsterTwo.GetComponent<LightFreezeAI>().triggered = true;
+                if (loadedSave.keyRing[i] == 2) monsterThree.GetComponent<LightFreezeAI>().triggered = true;
             }
         }
     }

@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 1902762838}
   - component: {fileID: 1902762836}
   - component: {fileID: 1902762837}
+  - component: {fileID: 6241697666322029533}
+  - component: {fileID: 8115884676568544118}
   m_Layer: 0
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,6 +179,8 @@ MonoBehaviour:
   player: {fileID: 0}
   monster: {fileID: 1902762833}
   LibraryBounds: {fileID: 0}
+  trigger: {fileID: 0}
+  triggered: 0
 --- !u!195 &1902762837
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -199,6 +203,36 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &6241697666322029533
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902762833}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.050167516
+  m_Height: 0.1888106
+  m_Direction: 1
+  m_Center: {x: 0.00021058353, y: 0.114528514, z: 0}
+--- !u!54 &8115884676568544118
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902762833}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3249339100965557
 GameObject:
   m_ObjectHideFlags: 0

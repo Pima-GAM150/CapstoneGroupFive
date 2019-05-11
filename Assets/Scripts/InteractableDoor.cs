@@ -13,7 +13,8 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
     private Rigidbody rb;
 
     public int doorIndex;
-    
+
+    private IEnumerator coroutine;
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +71,11 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
         }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Monster") { coroutine = Delayed(3f); StartCoroutine(coroutine); }
+    }
+
     public void OnClicked()
     {
         if (!locked)
@@ -111,5 +117,12 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
     public bool Unlocked()
     {
         return !locked;
+    }
+
+    private IEnumerator Delayed(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        navMeshOb.enabled = false;
+        rb.constraints = RigidbodyConstraints.None;
     }
 }
