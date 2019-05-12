@@ -8,6 +8,7 @@ public class CameraCastTest : MonoBehaviour
     public GameObject Player;
     MeshRenderer DisabledRenderer;
     private List<MeshRenderer> myRenderList = new List<MeshRenderer>();
+    private List<List<MeshRenderer>> myRenderListList = new List<List<MeshRenderer>>();
 
     // Start is called before the first frame update
     void Start()
@@ -29,14 +30,40 @@ public class CameraCastTest : MonoBehaviour
                     currentHit.enabled = false;
                     myRenderList.Add(currentHit);
                 }
-            }
-            else if (myRenderList.Count > 0)
-            {
-                foreach (MeshRenderer enabledRender in myRenderList)
+                if (!currentHit)
                 {
-                    enabledRender.enabled = true;
+                    List<MeshRenderer> currentHits = hit.collider.GetComponent<MeshRendererList>().thisObjectMeshes;
+                    if (currentHits != null && !myRenderListList.Contains(currentHits))
+                    {
+                        foreach (MeshRenderer disableRender in currentHits)
+                        {
+                            disableRender.enabled = false;
+                        }
+                        myRenderListList.Add(currentHits);
+                    }
                 }
-                myRenderList.Clear();
+            }
+            else
+            {
+                if (myRenderList.Count > 0)
+                {
+                    foreach (MeshRenderer enabledRender in myRenderList)
+                    {
+                        enabledRender.enabled = true;
+                    }
+                    myRenderList.Clear();
+                }   
+                if (myRenderListList.Count > 0)
+                {
+                    foreach (List<MeshRenderer> enabledRenders in myRenderListList)
+                    {
+                        foreach (MeshRenderer enabledRender in enabledRenders)
+                        {
+                            enabledRender.enabled = true;
+                        }
+                    }
+                    myRenderListList.Clear();
+                }
             }
         } 
     }
