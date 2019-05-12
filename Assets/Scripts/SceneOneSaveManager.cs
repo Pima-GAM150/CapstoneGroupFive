@@ -51,7 +51,12 @@ public class SceneOneSaveManager : MonoBehaviour
             player.GetComponent<CharacterControllerAddition>().keyRing = loadedSave.keyRing;
             for (int i = 0; i < doors.Length; i++)
             {
-                if (loadedSave.unlocked[i]) doors[i].GetComponentInChildren<Lock>().UnlockDoor();
+                if (loadedSave.unlocked[i])
+                {
+                    doors[i].GetComponentInChildren<Lock>().UnlockDoor();
+                    doors[i].GetComponentInChildren<Lock>().RemoveBarricade();
+
+                }
             }
             for (int i = 0; i < SceneOneKeyIndexes.Length; i++)
             {

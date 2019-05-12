@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 295308692}
   m_Layer: 0
   m_Name: MonsterThreeZones
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -665,7 +665,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19048
+  m_Name: pb_Mesh18794
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1486,7 +1486,7 @@ GameObject:
   - component: {fileID: 760362619}
   m_Layer: 0
   m_Name: MonsterOneZones
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1610,6 +1610,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 554315842}
+    - target: {fileID: 992480785, guid: 69be0c83f1f7db34899f0c0969cb975e, type: 3}
+      propertyPath: Barricade
+      value: 
+      objectReference: {fileID: 1997839511}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69be0c83f1f7db34899f0c0969cb975e, type: 3}
 --- !u!4 &825879085 stripped
@@ -2145,6 +2149,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 554315842}
+    - target: {fileID: 992480785, guid: 69be0c83f1f7db34899f0c0969cb975e, type: 3}
+      propertyPath: Barricade
+      value: 
+      objectReference: {fileID: 1954068606}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69be0c83f1f7db34899f0c0969cb975e, type: 3}
 --- !u!4 &980854529 stripped
@@ -2287,7 +2295,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh19064
+  m_Name: pb_Mesh18810
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -5670,7 +5678,7 @@ GameObject:
   - component: {fileID: 2008579204}
   m_Layer: 0
   m_Name: MonsterTwoZones
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

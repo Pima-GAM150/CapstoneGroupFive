@@ -9,7 +9,7 @@ public class MenuUI : MonoBehaviour
 
     public void Continue()
     {
-        SceneManager.LoadScene(1);
+        if (PlayerPrefs.HasKey("SceneOne")) SceneManager.LoadScene(1);
     }
 
     public void NewGame()

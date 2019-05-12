@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Lock : MonoBehaviour
 {
+    public GameObject Barricade;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -23,4 +25,10 @@ public class Lock : MonoBehaviour
         GetComponentInParent<InteractableDoor>().UnlockDoor();
         Destroy(this.gameObject);
     }
+    
+    public void RemoveBarricade()
+    {
+        if (Barricade) Destroy(Barricade);
+    }
+
 }
