@@ -134,9 +134,11 @@ public class CharacterControllerAddition : MonoBehaviour
 
     public void DropMatch()
     {
+        instantiatedMatch.GetComponentInChildren<CapsuleCollider>().isTrigger = false;
         instantiatedMatch.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
         instantiatedMatch.transform.parent = null;
         instantiatedMatch = null;
+        
     }
 
     public void LightMatch()
@@ -144,6 +146,7 @@ public class CharacterControllerAddition : MonoBehaviour
         instantiatedMatch = Instantiate<GameObject>(match, fingers.transform);
         instantiatedMatch.transform.localScale -= new Vector3(.099f,.099f,.099f);
         instantiatedMatch.transform.parent = fingers.transform;
+        instantiatedMatch.GetComponentInChildren<CapsuleCollider>().isTrigger = true;
     }
 
     public void SetMatchWaitTimer(float amount)

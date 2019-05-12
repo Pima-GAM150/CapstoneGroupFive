@@ -30,7 +30,7 @@ public class CameraCastTest : MonoBehaviour
                     myRenderList.Add(currentHit);
                 }
             }
-            else
+            else if (myRenderList.Count > 0)
             {
                 foreach (MeshRenderer enabledRender in myRenderList)
                 {
