@@ -94,6 +94,7 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
 
     public void UnlockDoor()
     {
+        Debug.Log("Unlocking " + doorIndex);
         navMeshOb.enabled = false;
         rb.constraints = RigidbodyConstraints.None;
         locked = false;

@@ -626,7 +626,7 @@ GameObject:
   - component: {fileID: 295308692}
   m_Layer: 0
   m_Name: MonsterThreeZones
-  m_TagString: Monster
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1486,7 +1486,7 @@ GameObject:
   - component: {fileID: 760362619}
   m_Layer: 0
   m_Name: MonsterOneZones
-  m_TagString: Monster
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4352,7 +4352,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 862653623, guid: 69be0c83f1f7db34899f0c0969cb975e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -126.71356
+      value: -126.74357
       objectReference: {fileID: 0}
     - target: {fileID: 862653623, guid: 69be0c83f1f7db34899f0c0969cb975e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5678,7 +5678,7 @@ GameObject:
   - component: {fileID: 2008579204}
   m_Layer: 0
   m_Name: MonsterTwoZones
-  m_TagString: Monster
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -9,6 +9,7 @@ TagManager:
   - Barricade
   - Object
   - Monster
+  - DisableMesh
   layers:
   - Default
   - TransparentFX

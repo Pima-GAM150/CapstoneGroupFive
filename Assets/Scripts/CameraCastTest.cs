@@ -30,7 +30,7 @@ public class CameraCastTest : MonoBehaviour
                     currentHit.enabled = false;
                     myRenderList.Add(currentHit);
                 }
-                if (!currentHit && hit.transform.tag != "Monster")
+                if (!currentHit && hit.transform.tag == "DisableMesh")
                 {
                     List<MeshRenderer> currentHits = hit.collider.GetComponent<MeshRendererList>().thisObjectMeshes;
                     if (currentHits != null && !myRenderListList.Contains(currentHits))

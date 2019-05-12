@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6745073292364455078}
   m_Layer: 0
   m_Name: BookshelfComplete
-  m_TagString: Untagged
+  m_TagString: DisableMesh
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -240,27 +240,27 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.002
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: e5be5b2fea4aa47409a46f8da0e7bef8, type: 3}
+    - target: {fileID: 400006, guid: e5be5b2fea4aa47409a46f8da0e7bef8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.002
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: e5be5b2fea4aa47409a46f8da0e7bef8, type: 3}
+    - target: {fileID: 400006, guid: e5be5b2fea4aa47409a46f8da0e7bef8, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.002
       objectReference: {fileID: 0}
-    - target: {fileID: 400004, guid: e5be5b2fea4aa47409a46f8da0e7bef8, type: 3}
+    - target: {fileID: 400006, guid: e5be5b2fea4aa47409a46f8da0e7bef8, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.002
       objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: e5be5b2fea4aa47409a46f8da0e7bef8, type: 3}
+    - target: {fileID: 400004, guid: e5be5b2fea4aa47409a46f8da0e7bef8, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.002
       objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: e5be5b2fea4aa47409a46f8da0e7bef8, type: 3}
+    - target: {fileID: 400004, guid: e5be5b2fea4aa47409a46f8da0e7bef8, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.002
       objectReference: {fileID: 0}
-    - target: {fileID: 400006, guid: e5be5b2fea4aa47409a46f8da0e7bef8, type: 3}
+    - target: {fileID: 400004, guid: e5be5b2fea4aa47409a46f8da0e7bef8, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.002
       objectReference: {fileID: 0}
