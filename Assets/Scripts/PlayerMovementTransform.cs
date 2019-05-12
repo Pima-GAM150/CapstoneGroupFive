@@ -101,7 +101,7 @@ public class PlayerMovementTransform : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift))
         {
             //GetComponent<CharacterControllerAddition>().isRunning = true;
-            sprintMoveSpeed = 2;
+            sprintMoveSpeed = 1.5f;
         }
         else
         {
