@@ -73,7 +73,7 @@ public class InteractableDoor : MonoBehaviour , IMoveableObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Monster") { coroutine = Delayed(3f); StartCoroutine(coroutine); }
+        if (other.gameObject.tag == "Monster") { if (Unlocked()) { coroutine = Delayed(3f); StartCoroutine(coroutine); } }
     }
 
     public void OnClicked()
