@@ -77,17 +77,23 @@ public class SceneOneSaveManager : MonoBehaviour
 
     public void SpawnSceneOneKeys(int i)
     {
-        GameObject tempKey;
+        
         switch (i)
         {
-            case 0: tempKey = Instantiate(key, new Vector3(-30f,.32f,105f),Quaternion.identity); tempKey.GetComponent<KeyData>().keyIndex = 2; break;
-            case 1: tempKey = Instantiate(key, new Vector3(2f, .32f, 75f), Quaternion.identity); tempKey.GetComponent<KeyData>().keyIndex = 5; break;
-            case 2: tempKey = Instantiate(key, new Vector3(-30f, .32f, 75f), Quaternion.identity); tempKey.GetComponent<KeyData>().keyIndex = 7; break;
-            case 3: tempKey = Instantiate(key, new Vector3(-25f, .32f, 121f), Quaternion.identity); tempKey.GetComponent<KeyData>().keyIndex = 9; break;
-            case 4: tempKey = Instantiate(key, new Vector3(-30f, .32f, 152f), Quaternion.identity); tempKey.GetComponent<KeyData>().keyIndex = 13; break;
+            case 0: SpawnKey(new Vector3(-30f,.32f,105f),2); break;
+            case 1: SpawnKey(new Vector3(2f, .32f, 75f),5); break;
+            case 2: SpawnKey(new Vector3(-30f, .32f, 75f),7); break;
+            case 3: SpawnKey(new Vector3(-25f, .32f, 121f),9); break;
+            case 4: SpawnKey(new Vector3(-30f, .32f, 152f),13); break;
         }
     }
 
+    public void SpawnKey(Vector3 spawnPos, int index){
+        GameObject tempKey;
+        tempKey = Instantiate(key,spawnPos ,Quaternion.identity); 
+        tempKey.GetComponent<KeyData>().keyIndex = index; 
+        tempKey.GetComponent<KeyData>().RendColor();
+    }
 
     public bool[] BuildDoorArray()
     {

@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8245327853081684789}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.679999, y: 3.56, z: -0.19999999}
+  m_LocalPosition: {x: 12.679999, y: 3.6299999, z: -0.19999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8245327854017872919}
@@ -294,17 +294,9 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_IsSelectable: 1
-  m_SelectedFaces: 01000000
-  m_SelectedEdges:
-  - a: 4
-    b: 5
-  - a: 6
-    b: 4
-  - a: 5
-    b: 7
-  - a: 7
-    b: 6
-  m_SelectedVertices: 04000000050000000600000007000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!54 &8245327853081684684
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -346,6 +338,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fff4f3ee38ba8b469ecd72c324b3576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyColor:
+  - {r: 0.035300255, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0, a: 0}
+  - {r: 1, g: 0.68506926, b: 0, a: 0}
+  - {r: 0, g: 1, b: 0.034508705, a: 0}
+  - {r: 1, g: 0, b: 0.9059248, a: 0}
   keyIndex: 0
 --- !u!1001 &8245327854017486487
 PrefabInstance:
