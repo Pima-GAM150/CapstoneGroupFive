@@ -65,9 +65,15 @@ public class LightFreezeAI : MonoBehaviour
                     myAnimator.SetBool("IsWalking", true);
                     agent.destination = player.transform.position;
                     agent.speed = chaseSpeed;
-                    if (Vector3.Distance(transform.position, player.transform.position) < 2)
+                    if (Vector3.Distance(transform.position, player.transform.position) < 2.5)
                     {
                         player.GetComponentInChildren<PlayerHealth>().TakeDamage(5 * Time.deltaTime);
+                        if (Vector3.Distance(transform.position, player.transform.position) < 2)
+                        {
+                            agent.destination = transform.position;
+                            agent.speed = 0f;
+                            myAnimator.SetBool("IsWalking", false);
+                        }
                     }
                 }
                 else
