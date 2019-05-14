@@ -56,6 +56,7 @@ public class SceneOneSaveManager : MonoBehaviour
                     doors[i].GetComponentInChildren<Lock>().UnlockDoor();
                     doors[i].GetComponentInChildren<Lock>().RemoveBarricade();
                 }
+                doors[i].GetComponentInChildren<Lock>().RendColor();
             }
             for (int i = 0; i < SceneOneKeyIndexes.Length; i++)
             {

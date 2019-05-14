@@ -27,13 +27,13 @@ public class HeartbeatProximity : MonoBehaviour
         verticalDistance = Vector3.Distance(new Vector3(0, Player.transform.position.y), new Vector3(0, Monster.transform.position.y));
         if (distance < 120)
         {
-            Debug.Log(distance);
+            //Debug.Log(distance);
             if (verticalDistance < 2)
             {
                 audioDelay += 1;
                 if (distance >= 4 && audioDelay > distance - 5 && audioDelay < distance + 5 && !heartSource.isPlaying)
                 {
-                    Debug.Log("Playing heartbeat");
+                    //Debug.Log("Playing heartbeat");
                     heartSource.Play();
                     audioDelay = 0;
                 }

@@ -117,7 +117,7 @@ MonoBehaviour:
   displayLightIntensity: 20
   displayAreaLightEmissiveMesh: 0
   lightLayers: 1
-  shadowNearPlane: 0.1
+  shadowNearPlane: 1
   shadowSoftness: 0.5
   blockerSampleCount: 24
   filterSampleCount: 16
@@ -4882,6 +4882,7 @@ MonoBehaviour:
   LifeSpan: 0
   intensity: 0
   matchJumpiness: 2
+  nearPlane: 0
 --- !u!54 &7911539691628976217
 Rigidbody:
   m_ObjectHideFlags: 0
