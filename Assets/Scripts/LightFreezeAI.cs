@@ -88,6 +88,12 @@ public class LightFreezeAI : MonoBehaviour
                     MassExtinguish(); getNewWaitTime();
                 }
             }
+            else
+            {
+                agent.destination = transform.position;
+                agent.speed = 0f;
+                myAnimator.SetBool("IsWalking", false);
+            }
         }
         else
         {
